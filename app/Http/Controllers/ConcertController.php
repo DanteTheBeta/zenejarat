@@ -8,13 +8,13 @@ use App\Models\Concert;
 
 class ConcertController extends Controller
 {
-    // Minden koncert lekérdezése
+    
     public function index()
     {
         return response()->json(Concert::with('venue')->get(), 200);
     }
 
-    // Egy adott koncert lekérdezése
+    
     public function show($id)
     {
         $concert = Concert::with('venue')->find($id);
@@ -26,7 +26,7 @@ class ConcertController extends Controller
         return response()->json($concert, 200);
     }
 
-    // Új koncert létrehozása
+    
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -41,7 +41,7 @@ class ConcertController extends Controller
         return response()->json($concert, 201);
     }
 
-    // Koncert frissítése
+    
     public function update(Request $request, $id)
     {
         $concert = Concert::find($id);
@@ -62,7 +62,7 @@ class ConcertController extends Controller
         return response()->json($concert, 200);
     }
 
-    // Koncert törlése
+    
     public function destroy($id)
     {
         $concert = Concert::find($id);
